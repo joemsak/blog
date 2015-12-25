@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'dbc/blog/version'
+require 'dbc/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "dbc-blog"
-  spec.version       = Dbc::Blog::VERSION
+  spec.version       = Dbc::VERSION
   spec.authors       = ["Joe Sak"]
   spec.email         = ["joe@joesak.com"]
 
