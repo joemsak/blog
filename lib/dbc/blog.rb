@@ -15,6 +15,10 @@ module Dbc
     def posts
       @posts.select(&:published?).sort_by(&:published_at).reverse
     end
+
+    def drafted_posts
+      @posts.select(&:drafted?).sort_by(&:drafted_at).reverse
+    end
   end
 
   class Post
@@ -32,8 +36,18 @@ module Dbc
       drafted_at
     end
 
+    def draft!
+      @drafted_at = Time.now
+      @published_at = nil
+    end
+
     def published?
       published_at
+    end
+
+    def publish!
+      @published_at = Time.now
+      @drafted_at = nil
     end
   end
 end
