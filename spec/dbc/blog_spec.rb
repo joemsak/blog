@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe Dbc::Blog do
-  it 'has a version number' do
-    expect(Dbc::Blog::VERSION).not_to be nil
-  end
+  it 'lists posts with newest at top' do
+    blog = Dbc::Blog.new
+    first_post = blog.add_post(title: 'First post', body: 'A great, long post')
+    second_post = blog.add_post(title: 'Second post', body: 'Another great, long post')
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+    expect(blog.posts).to eq([second_post, first_post])
   end
 end
