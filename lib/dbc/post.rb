@@ -7,7 +7,7 @@ module Dbc
         instance_variable_set("@#{k}", v)
       end
 
-      @published_at = Time.now unless drafted?
+      publish! unless drafted?
     end
 
     def drafted?

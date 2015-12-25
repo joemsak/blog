@@ -19,28 +19,6 @@ describe Dbc::Blog do
     expect(blog.posts).to eq([published])
   end
 
-  it 'publishes drafted posts' do
-    drafted = blog.add_post(title: 'Drafted',
-                            body: 'Drafted before its time',
-                            drafted_at: Time.now)
-
-    drafted.publish!
-
-    expect(drafted.drafted_at).to be_nil
-    expect(drafted.published_at).not_to be_nil
-    expect(blog.posts).to eq([drafted])
-  end
-
-  it 'drafts published posts' do
-    published = blog.add_post(title: 'Published', body: 'Published too soon')
-
-    published.draft!
-
-    expect(published.published_at).to be_nil
-    expect(published.drafted_at).not_to be_nil
-    expect(blog.posts).to be_empty
-  end
-
   it 'lists drafted posts, newest on top' do
     newer_drafted = blog.add_post(drafted_at: Time.now - 1)
     older_drafted = blog.add_post(drafted_at: Time.now - 2)
